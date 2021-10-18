@@ -22,7 +22,7 @@ type RestrictedLink = <S = LocationState>(
   ...params: Parameters<RestrictedLinkComponentParams & { to: RoutesPaths }>
 ) => ReturnType<ReactRouterLink<S>>
 
-const Link = ReactRouterLink as RestrictedLink
+const customLink = ReactRouterLink as RestrictedLink
 
 type RestrictedHistory<HistoryLocationState = LocationState> =
   History<HistoryLocationState> & {
@@ -35,4 +35,4 @@ type useHistoryType = <
 const useHistory = useReactRouterHistory as useHistoryType
 
 export * from 'react-router-dom'
-export { Route, Link, useHistory }
+export { Route, customLink, useHistory }
