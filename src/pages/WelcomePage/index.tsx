@@ -1,6 +1,9 @@
 import React, { FC, useEffect, useState } from 'react'
 import s from './WelcomePage.module.css'
 import { magic } from '@/magic/Magic'
+import googleIcon from '@/assets/google.png'
+import githubIcon from '@/assets/github.png'
+import facebookIcon from '@/assets/facebook.png'
 import { handleLogin, loginWithService, logout } from '@/magic/Magic'
 import { useHistory } from 'react-router-dom'
 
@@ -60,13 +63,13 @@ const WelcomePage: FC = () => {
         </div>
         <div className={s.loginWithServiceButtons}>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('google')}>
-            <img className={s.icon} src='/src/assets/google.png' />
+            <img className={s.icon} src={googleIcon} />
           </div>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('facebook')}>
-            <img className={s.icon} src='/src/assets/facebook.png' />
+            <img className={s.icon} src={facebookIcon} />
           </div>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('github')}>
-            <img className={s.icon} src='/src/assets/github.png' />
+            <img className={s.icon} src={githubIcon} />
           </div>
         </div>
       </div> :
