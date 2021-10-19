@@ -1,0 +1,90 @@
+.pageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+    padding: 0 2rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+.loginContainer {
+    max-width: 200px;
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    transition: .5s ease;
+    border-radius: .2rem;
+    border: 1px solid #d8d8d8;
+    -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.loginWithServiceButtons {
+    padding-top: .5rem;
+}
+
+.loginWithServiceButton {
+    display: flex;
+    justify-content: center;
+    padding-bottom: .2rem;
+}
+
+.orSeparator {
+    padding-top: .5rem;
+    font-size: .85rem;
+    color: #8d8d8d
+}
+
+.loginWithServiceButton:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.loginWithEmailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.loginButton {
+    background: #6679ff;
+    border-radius: .2rem;
+    border: none;
+    margin-top: 1rem;
+    width: 100%;
+    color: white;
+    height: 30px;
+}
+
+.loginButton:hover {
+    background: #756cff;
+    cursor: pointer;
+}
+
+.emailInput {
+    width: 100%;
+    padding: .5rem;
+    border-radius: 4px;
+    border: 1px solid #909090;
+    outline: none;
+}
+
+.loginWithServiceContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.icon {
+    width: 100%;
+}
+
+.gitHubIcon {
+    height: 1.25rem;
+    margin-right: .8rem;
+}
+
+.logoutLink {
+    color: -webkit-link;
+    cursor: pointer;
+}
