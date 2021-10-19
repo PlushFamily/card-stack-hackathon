@@ -13,8 +13,8 @@ jobs:
       - uses: actions/cache@v2
         with:
             path: '**/node_modules'
-            key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
-        run: npm i
+        run: yarn
       - name: Build
-        run: npm run build
+        run: yarn build
