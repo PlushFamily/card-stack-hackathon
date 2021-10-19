@@ -11,6 +11,10 @@
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "dependencies": {
     "classnames": "^2.3.1",
     "normalize.css": "^8.0.1",
