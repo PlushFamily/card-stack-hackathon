@@ -11,6 +11,10 @@
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
+  "engines": {
+    "node": ">=15.0.0",
+    "npm": ">=7.0.0"
+  },
   "dependencies": {
     "@3id/connect": "^0.2.5",
     "@ceramicnetwork/3id-did-resolver": "^1.4.4",
