@@ -23,8 +23,7 @@
     "@magic-ext/oauth": "^0.10.0",
     "classnames": "^2.3.1",
     "dids": "^2.4.0",
-    "magic": "^2.3.5-alpha.1",
-    "magic-sdk": "^6.1.0",
+    "magic-sdk": "^4.1.1",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -32,6 +31,7 @@
     "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
+    "@magic-sdk/types": "^5.1.0",
     "@types/history": "^4.7.9",
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.30",
