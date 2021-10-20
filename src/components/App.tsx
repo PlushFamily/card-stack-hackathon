@@ -1,13 +1,13 @@
 import React from 'react'
 
-import Index from '@/pages/WelcomePage'
-
-import { Route, Switch } from '@/components/Router'
+import WelcomePage from "../pages/WelcomePage";
+import {Switch} from "react-router-dom";
+import {Route} from "./Router";
 
 function App() {
   return (
     <Switch>
-      <Route path='/' component={Index} />
+      <Route path='/' component={WelcomePage} />
     </Switch>
   )
 }

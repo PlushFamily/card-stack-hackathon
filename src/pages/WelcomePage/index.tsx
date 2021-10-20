@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useState } from 'react'
 import s from './WelcomePage.module.css'
-import { magic } from '@/magic/Magic'
-import googleIcon from '@/assets/google.png'
-import githubIcon from '@/assets/github.png'
-import facebookIcon from '@/assets/facebook.png'
-import { handleLogin, loginWithService, logout } from '@/magic/Magic'
+import googleIcon from '../../assets/google.png'
+import githubIcon from '../../assets/github.png'
+import facebookIcon from '../../assets/facebook.png'
 import { useHistory } from 'react-router-dom'
+import {authenticate} from "../../ceramic/Ceramic";
+import {handleLogin, loginWithService, logout, magic} from "../../magic/Magic";
+
 
 const WelcomePage: FC = () => {
 
@@ -15,12 +16,14 @@ const WelcomePage: FC = () => {
   const history = useHistory()
 
   useEffect(() => {
-    const checkMagikAuth = async () => {
+
+    const checkMagicAuth = async () => {
       setIsAuthenticated(await magic.user.isLoggedIn())
       if (isAuthenticated) {
         setUserProfile(await magic.user.getMetadata())
       } else {
         await magicAuth()
+
       }
     }
     const magicAuth = async () => {
@@ -44,8 +47,8 @@ const WelcomePage: FC = () => {
         console.log(err)
       }
     }
-    checkMagikAuth()
-  }, [window.location.href, isAuthenticated])
+    checkMagicAuth()
+  }, [isAuthenticated, history, userProfile])
 
   return <div className={s.pageContainer}>
     {!isAuthenticated ?
@@ -63,17 +66,17 @@ const WelcomePage: FC = () => {
         </div>
         <div className={s.loginWithServiceButtons}>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('google')}>
-            <img className={s.icon} src={googleIcon} />
+            <img className={s.icon} alt={'googleIcon'} src={googleIcon} />
           </div>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('facebook')}>
-            <img className={s.icon} src={facebookIcon} />
+            <img className={s.icon} alt={'facebookIcon'} src={facebookIcon} />
           </div>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('github')}>
-            <img className={s.icon} src={githubIcon} />
+            <img className={s.icon} alt={'githubIcon'} src={githubIcon} />
           </div>
         </div>
       </div> :
-      <div>you are logged in as {userProfile?.email},
+      <div>you are logged in as {userProfile?.email}, <span onClick={() => authenticate()}>login in Ceramic</span>
         <span onClick={() => logout()}>
           <u className={s.logoutLink}>logout</u>
         </span>
