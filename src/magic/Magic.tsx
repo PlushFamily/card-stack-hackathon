@@ -2,7 +2,7 @@ import { Magic } from 'magic-sdk'
 import { OAuthExtension } from '@magic-ext/oauth'
 import { OAuthProvider } from '@magic-ext/oauth/dist/types/types'
 
-const {REACT_APP_MAGIC_KEY}: any = process.env;
+const { REACT_APP_MAGIC_KEY }: any = process.env
 
 export const magic = new Magic(REACT_APP_MAGIC_KEY, { extensions: [new OAuthExtension()] })
 
@@ -20,5 +20,6 @@ export const loginWithService = async (serviceName: OAuthProvider) => {
 
 export const logout = async () => {
   await magic.user.logout()
+  localStorage.clear()
   window.location.href = '/'
 }
