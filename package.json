@@ -8,6 +8,7 @@
   "repository": "github:PlushFamily/card-stack-hackathon",
   "dependencies": {
     "@3id/connect": "^0.2.5",
+    "@3id/manager": "^0.2.6",
     "@ceramicnetwork/3id-did-resolver": "^1.4.4",
     "@ceramicnetwork/ceramic-http-client": "^0.7.5",
     "@ceramicnetwork/http-client": "^1.4.0",

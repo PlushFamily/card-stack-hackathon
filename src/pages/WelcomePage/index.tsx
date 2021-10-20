@@ -4,43 +4,40 @@ import googleIcon from '../../assets/google.png'
 import githubIcon from '../../assets/github.png'
 import facebookIcon from '../../assets/facebook.png'
 import { useHistory } from 'react-router-dom'
-import {authenticate} from "../../ceramic/Ceramic";
-import {handleLogin, loginWithService, logout, magic} from "../../magic/Magic";
-
+import { handleLogin, loginWithService, logout, magic } from '../../magic/Magic'
+import { ceramicAuth } from '../../ceramic/Ceramic'
 
 const WelcomePage: FC = () => {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isMagicAuthenticated, setMagicIsAuthenticated] = useState<boolean>(false)
+  const [isCeramicAuthenticated, setIsCeramicAuthenticated] = useState<boolean>(false)
   const [userProfile, setUserProfile] = useState<any>({})
   const [email, setEmail] = useState('')
   const history = useHistory()
 
   useEffect(() => {
-
     const checkMagicAuth = async () => {
-      setIsAuthenticated(await magic.user.isLoggedIn())
-      if (isAuthenticated) {
+      setMagicIsAuthenticated(await magic.user.isLoggedIn())
+      if (isMagicAuthenticated) {
         setUserProfile(await magic.user.getMetadata())
       } else {
         await magicAuth()
-
       }
     }
+    const checkCeramicAuth = async () => !isCeramicAuthenticated && isMagicAuthenticated && ceramicAuth()
+
     const magicAuth = async () => {
-      setIsAuthenticated(await magic.user.isLoggedIn())
       try {
         if (window.location.pathname === '/oauth-callback') {
           const result = await magic.oauth.getRedirectResult()
           setUserProfile(result.oauth.userInfo)
           history.push('/')
-          console.log(userProfile)
         }
         if (window.location.pathname === '/magic-link-callback') {
           /* Complete the "authentication callback" */
           await magic.auth.loginWithCredential()
           /* Get user metadata including email */
           setUserProfile(await magic.user.getMetadata())
-          console.log(userProfile)
           history.push('/')
         }
       } catch (err) {
@@ -48,10 +45,11 @@ const WelcomePage: FC = () => {
       }
     }
     checkMagicAuth()
-  }, [isAuthenticated, history, userProfile])
+    checkCeramicAuth()
+  }, [window.location.href, isMagicAuthenticated])
 
   return <div className={s.pageContainer}>
-    {!isAuthenticated ?
+    {!isMagicAuthenticated ?
       <div className={s.loginContainer}>
         <h1>Login</h1>
         <div className={s.loginWithEmailContainer}>
@@ -76,7 +74,9 @@ const WelcomePage: FC = () => {
           </div>
         </div>
       </div> :
-      <div>you are logged in as {userProfile?.email}, <span onClick={() => authenticate()}>login in Ceramic</span>
+      <div>you are logged in as {userProfile?.email},
+
+        {isCeramicAuthenticated ? <span>login in Ceramic</span> : null}
         <span onClick={() => logout()}>
           <u className={s.logoutLink}>logout</u>
         </span>
