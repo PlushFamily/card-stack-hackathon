@@ -10,15 +10,15 @@ https://gitcoin.co/issue/ceramicnetwork/ceramic/86/100026722
 
 ```
 ## Magic.link API key
-VITE_APP_MAGIC_KEY=pk_live_KEY
+REACT_APP_MAGIC_KEY=pk_live_KEY
 # Ceramic API key
-VITE_APP_CERAMIC_API=https://domain.com
+REACT_APP_CERAMIC_API=https://domain.com
 ```
 
-3. Then you need to install all project dependencies: `npm install`
+3. Then you need to install all project dependencies: `yarn`
 
 ## Using
 
-– For local development use the command `npm run dev`.
+– For local development use the command `yarn dev`.
 
-– Use the command `npm run build` to build the project.
+– Use the command `yarn build` to build the project.
