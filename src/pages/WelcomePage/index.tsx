@@ -17,7 +17,7 @@ const WelcomePage: FC = () => {
 
   useEffect(() => {
 
-    const checkMagikAuth = async () => {
+    const checkMagicAuth = async () => {
       setIsAuthenticated(await magic.user.isLoggedIn())
       if (isAuthenticated) {
         setUserProfile(await magic.user.getMetadata())
@@ -47,8 +47,8 @@ const WelcomePage: FC = () => {
         console.log(err)
       }
     }
-    checkMagikAuth()
-  }, [window.location.href, isAuthenticated])
+    checkMagicAuth()
+  }, [isAuthenticated, history, userProfile])
 
   return <div className={s.pageContainer}>
     {!isAuthenticated ?
@@ -66,13 +66,13 @@ const WelcomePage: FC = () => {
         </div>
         <div className={s.loginWithServiceButtons}>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('google')}>
-            <img className={s.icon} src={googleIcon} />
+            <img className={s.icon} alt={'googleIcon'} src={googleIcon} />
           </div>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('facebook')}>
-            <img className={s.icon} src={facebookIcon} />
+            <img className={s.icon} alt={'facebookIcon'} src={facebookIcon} />
           </div>
           <div className={s.loginWithServiceButton} onClick={() => loginWithService('github')}>
-            <img className={s.icon} src={githubIcon} />
+            <img className={s.icon} alt={'githubIcon'} src={githubIcon} />
           </div>
         </div>
       </div> :
