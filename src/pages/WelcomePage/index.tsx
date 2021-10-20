@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useState } from 'react'
 import s from './WelcomePage.module.css'
-import { magic } from '@/magic/Magic'
-import googleIcon from '@/assets/google.png'
-import githubIcon from '@/assets/github.png'
-import facebookIcon from '@/assets/facebook.png'
-import { handleLogin, loginWithService, logout } from '@/magic/Magic'
+import googleIcon from '../../assets/google.png'
+import githubIcon from '../../assets/github.png'
+import facebookIcon from '../../assets/facebook.png'
 import { useHistory } from 'react-router-dom'
+import {authenticate} from "../../ceramic/Ceramic";
+import {handleLogin, loginWithService, logout, magic} from "../../magic/Magic";
+
 
 const WelcomePage: FC = () => {
 
@@ -15,12 +16,14 @@ const WelcomePage: FC = () => {
   const history = useHistory()
 
   useEffect(() => {
+
     const checkMagikAuth = async () => {
       setIsAuthenticated(await magic.user.isLoggedIn())
       if (isAuthenticated) {
         setUserProfile(await magic.user.getMetadata())
       } else {
         await magicAuth()
+
       }
     }
     const magicAuth = async () => {
@@ -73,7 +76,7 @@ const WelcomePage: FC = () => {
           </div>
         </div>
       </div> :
-      <div>you are logged in as {userProfile?.email},
+      <div>you are logged in as {userProfile?.email}, <span onClick={() => authenticate()}>login in Ceramic</span>
         <span onClick={() => logout()}>
           <u className={s.logoutLink}>logout</u>
         </span>
