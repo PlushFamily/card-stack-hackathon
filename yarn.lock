@@ -2248,7 +2248,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@magic-ext/oauth@^0.10.0":
+"@magic-ext/oauth@^0.10.1":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@magic-ext/oauth/-/oauth-0.10.1.tgz#ca60e1a4a034e13cd4b29502541712f41398f84d"
   integrity sha512-oYul/Gk+SI2m2tNwpO/QxZzMeTn1pAYr371s6OJ+zFXi94fEjxtNjoty44gyY5sTdsbnNHCIlHGMTDjnsT1Trg==
@@ -4877,11 +4877,6 @@ cosmiconfig@^7.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
-
-cra-template-typescript@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/cra-template-typescript/-/cra-template-typescript-1.1.2.tgz#938f3699430dc9dda0bbf23eeb2e6daf45f3790c"
-  integrity sha512-lA+2Zjtw2q/HxLWY25y9cRL2OY8oK0hz19cnsig5lXDomQ7vbLwM1HZ0DC8IVa895/rCy+Y2Kf5NsR9xCcsA8w==
 
 crc-32@^1.2.0:
   version "1.2.0"
@@ -8894,7 +8889,7 @@ lru_map@^0.4.1:
   resolved "https://registry.yarnpkg.com/lru_map/-/lru_map-0.4.1.tgz#f7b4046283c79fb7370c36f8fca6aee4324b0a98"
   integrity sha512-I+lBvqMMFfqaV8CJCISjI3wbjmwVu/VyOoU7+qtu9d7ioW5klMgsTTiUOUp+DJvfTTzKXoPbyC6YfgkNcyPSOg==
 
-magic-sdk@^6.1.0:
+magic-sdk@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/magic-sdk/-/magic-sdk-6.1.1.tgz#38993582c815b6a38c8fc4c925d8b2198372a843"
   integrity sha512-PGadxbKDME+hYjYYDPiQDnNfik2q8+Qq9FJmtRD4DF9+2uOtlS5v7a4Pe4DjcaT0h5WHZLOmuknU84F+i9G3Yw==
@@ -9501,11 +9496,6 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
-
-normalize.css@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
-  integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
 npm-run-path@^2.0.0:
   version "2.0.2"
