@@ -57,7 +57,6 @@ export const ceramicAuth = async () => {
             console.log(`You are successfully logged in Ceramic with DID: ${ceramic?.did?.id}`)
         }
     } catch (err) {
-        console.log(provider)
         if (!provider.accountId)
         console.log(provider.accountId)
         ceramic?.did?.setProvider(provider)
