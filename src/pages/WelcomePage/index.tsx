@@ -26,6 +26,7 @@ const WelcomePage: FC = () => {
                 setIsFetching(false)
             } else {
                 await magicAuth()
+                setIsFetching(false)
             }
         }
         const checkCeramicAuth = async () => isMagicAuthenticated && ceramicAuth()
@@ -42,11 +43,12 @@ const WelcomePage: FC = () => {
                     await magic.auth.loginWithCredential()
                     /* Get user metadata including email */
                     setUserProfile(await magic.user.getMetadata())
-                    setIsFetching(false)
                     history.push('/')
                 }
             } catch (err) {
                 console.log(err)
+            } finally {
+                setIsFetching(false)
             }
         }
         checkMagicAuth()
@@ -57,7 +59,7 @@ const WelcomePage: FC = () => {
         {isFetching ?  <Loader/> :
             !isMagicAuthenticated ?
             <div className={s.loginContainer}>
-                <h1>Login</h1>
+                <h1 className={s.loginTitle}>Login</h1>
                 <div className={s.loginWithEmailContainer}>
                     <input className={s.emailInput} onChange={(e) => setEmail(e.target.value)} type='email' name='email'
                            required

@@ -16,7 +16,7 @@
 
 .loginContainer {
     width: 100%;
-    max-width: 200px;
+    max-width: 350px;
     background: white;
     padding: 2rem;
     margin: auto;
@@ -25,6 +25,11 @@
     border-radius: 1rem;
     border: 1px solid #d8d8d8;
     box-shadow: rgb(255 255 255 / 49%) 0px 10px 36px 0px, rgb(0 0 0 / 6%) 0px 0px 0px 1px;
+}
+
+.loginTitle {
+    font-size: 3rem;
+    font-weight: 400;
 }
 
 .homeIcon {
@@ -41,6 +46,8 @@
 
 .loginWithServiceButtons {
     padding-top: .5rem;
+    max-width: 220px;
+    margin: auto;
 }
 
 .loginWithServiceButton {
@@ -64,6 +71,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 300px;
+    margin: auto;
 }
 
 .loginButton {
@@ -73,7 +82,9 @@
     margin-top: 1rem;
     width: 100%;
     color: white;
-    height: 30px;
+    font-size: 1rem;
+    height: 46px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .loginButton:hover {
@@ -83,10 +94,12 @@
 
 .emailInput {
     width: 100%;
+    height: 28px;
     padding: .5rem;
     border-radius: 4px;
     border: 1px solid #d9d9d9;
     outline: none;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .loginWithServiceContainer {
