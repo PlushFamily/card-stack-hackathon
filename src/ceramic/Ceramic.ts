@@ -51,15 +51,30 @@ export const ceramicAuth = async () => {
 
     const provider = await threeIdConnect.getDidProvider()
 
+    async function getDID(){
+        try {
+            return ceramic?.did?.id
+        }
+        catch (e){
+            return false
+        }
+    }
+
     try {
-        if (ceramic?.did?.id && provider.accountId) {
-            localStorage.setItem('did', ceramic?.did?.id)
+        const ceramicDID = await getDID();
+
+        if (!ceramicDID){
+            ceramic?.did?.setProvider(provider)
+            await ceramic?.did?.authenticate()
+            const ceramicDID: any = await getDID();
+            localStorage.setItem('did', ceramicDID)
+            console.log(`You are successfully logged in Ceramic with DID: ${ceramic?.did?.id}`)
+        }
+        else {
+            localStorage.setItem('did', ceramicDID)
             console.log(`You are successfully logged in Ceramic with DID: ${ceramic?.did?.id}`)
         }
     } catch (err) {
-        if (!provider.accountId)
-        console.log(provider.accountId)
-        ceramic?.did?.setProvider(provider)
-        await ceramic?.did?.authenticate()
+        console.log(err)
     }
 }
