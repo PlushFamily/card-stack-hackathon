@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom";
 import HomeIcon from "../../assets/home-button-svgrepo-com.svg";
 import Loader from "../../components/Loader/Loader";
 import {magic} from "../../magic/Magic";
+import {ScaleLoader} from "react-spinners";
 
 interface CeramicUserData {
     name?: string,
@@ -15,10 +16,11 @@ interface CeramicUserData {
 
 function Settings() {
 
-    const [userName, setUserName] = useState('')
+    const [userName, setUserName] = useState<string>('')
     const [userEmail, setUserEmail] = useState<any>('')
     const [isFetching, setIsFetching] = useState(true);
-    const [userDescription, setUserDescription] = useState('')
+    const [userDescription, setUserDescription] = useState<string>('')
+    const [isPostingResult, setIsPostingResult] = useState(false)
     const history = useHistory()
 
     useEffect(() => {
@@ -35,6 +37,7 @@ function Settings() {
     }, [])
 
     const changePersonalInfo = async () => {
+        writeUserData()
         if (userName !== '' || userDescription !== '') {
             await idx.set("basicProfile", {
                 name: userName,
@@ -42,28 +45,39 @@ function Settings() {
             });
         }
     }
+
+    const writeUserData = () => {
+        setIsPostingResult(true)
+        setTimeout(() => {
+            setIsPostingResult(false)
+        }, 2000)
+    }
     return (
         !isFetching ?
-        <div className={s.settingsContainer}>
-            <div className={s.controlContainer}>
+            <div className={s.settingsContainer}>
+                <div className={s.controlContainer}>
                     <span onClick={() => history.push('/')}>
                         <img className={s.homeIcon} alt="home" src={HomeIcon}/>
                     </span>
-                <Profile email={userEmail}/>
-            </div>
-            <div className={s.settings}>
-                <span className={s.windowTitle}>Settings</span>
-                <input name="name" defaultValue={userName} onBlur={(e) => setUserName(e.target.value)}
-                       className={s.input} type="text"
-                       placeholder="Name"/>
-                <textarea defaultValue={userDescription} name="description"
-                          onBlur={(e) => setUserDescription(e.target.value)}
-                          className={`${s.input} ${s.textArea}`} placeholder="About myself"/>
-                <div onClick={() => changePersonalInfo()} className={`${s.saveProfileDataButton} ${s.buttonMimas} ${s.up}`}>
-                   <span>Save</span>
+                    <Profile email={userEmail}/>
                 </div>
-            </div>
-        </div> : <Loader/>
+                <div className={s.settings}>
+                    <span className={s.windowTitle}>Settings</span>
+                    <input name="name" defaultValue={userName} onBlur={(e) => setUserName(e.target.value)}
+                           className={s.input} type="text"
+                           placeholder="Name"/>
+                    <textarea defaultValue={userDescription} name="description"
+                              onBlur={(e) => setUserDescription(e.target.value)}
+                              className={`${s.input} ${s.textArea}`} placeholder="About myself"/>
+                    <div onClick={() => changePersonalInfo()}
+                         className={s.saveProfileDataButton}>
+                        {isPostingResult ?
+                            <div className={s.loader}>
+                                <ScaleLoader/>
+                            </div> : <span>Save</span>}
+                    </div>
+                </div>
+            </div> : <Loader/>
     )
 }
 
