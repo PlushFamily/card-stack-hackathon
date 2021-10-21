@@ -79,7 +79,7 @@
     margin-bottom: 1rem;
 }
 
-.lastAttempts {
+.lastAttempts, .startQuizButton {
     background: #ffffff42;
     border-radius: .3rem;
     padding: .5rem 1rem;
@@ -87,6 +87,36 @@
     flex-wrap: wrap;
     border: 1px solid #747474;
 }
+
+.startQuizButton {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    max-width: 300px;
+    max-height: 300px;
+    background: #3e3e3e99;
+    cursor: pointer;
+    border: none;
+    transition: .3s ease;
+}
+
+.startQuizText {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.playQuizIcon {
+    max-width: 50%;
+}
+
+.startQuizButton:hover {
+    background: #c10085;
+    border: none;
+}
+
 .attempt {
     width: 100%;
     text-align: center;
