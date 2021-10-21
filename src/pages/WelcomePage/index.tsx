@@ -53,7 +53,7 @@ const WelcomePage: FC = () => {
         }
         checkMagicAuth()
         checkCeramicAuth()
-    }, [window.location.href, isMagicAuthenticated, isFetching])
+    }, [isMagicAuthenticated, isFetching, history])
 
     return <div className={s.pageContainer}>
         {isFetching ?  <Loader/> :
