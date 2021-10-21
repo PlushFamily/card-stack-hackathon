@@ -10,11 +10,13 @@ View on [card-stack-hackathon-zr8qz.ondigitalocean.app](https://card-stack-hacka
 
 ## Screenshots
 
-<img width="1680" alt="Screenshot 2021-10-21 at 21 34 52" src="https://user-images.githubusercontent.com/9155259/138336767-ebb425f5-e80c-4ef2-9cc0-88d0bfea34ff.png">
+<img width="1680" alt="Login page" src="https://user-images.githubusercontent.com/9155259/138336767-ebb425f5-e80c-4ef2-9cc0-88d0bfea34ff.png">*Login page*
 
-<img width="1680" alt="Screenshot 2021-10-21 at 21 41 33" src="https://user-images.githubusercontent.com/9155259/138337613-ba36153e-2152-4d23-877f-a6a681215181.png">
+<img width="1680" alt="First login with new ETH wallet" src="https://user-images.githubusercontent.com/9155259/138338183-77fb0f94-ad54-4038-a54b-337456e26739.png">*First login with new ETH wallet*
 
-<img width="1680" alt="Screenshot 2021-10-21 at 21 42 41" src="https://user-images.githubusercontent.com/9155259/138337779-a1052779-7a2d-4033-b275-5047adff9dba.png">
+<img width="1680" alt="Quiz stage" src="https://user-images.githubusercontent.com/9155259/138337613-ba36153e-2152-4d23-877f-a6a681215181.png">*Quiz stage*
+
+<img width="1680" alt="Settings page" src="https://user-images.githubusercontent.com/9155259/138337779-a1052779-7a2d-4033-b275-5047adff9dba.png">*Settings page*
 
 
 ## Technologies used
@@ -34,6 +36,7 @@ https://miro.com/app/board/o9J_lp7bUq0=/?invite_link_id=346148181420
 ## Requirements
 
 * NodeJS 14 or older
+* Metamask
 
 
 ## Installation
