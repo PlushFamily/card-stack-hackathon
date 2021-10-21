@@ -55,7 +55,7 @@ https://miro.com/app/board/o9J_lp7bUq0=/?invite_link_id=346148181420
 2. After to download the project you should to create file `.env` at the root of the project with environment variables:
 
 ```
-## Magic.link API key
+# Magic.link API key
 REACT_APP_MAGIC_KEY=pk_live_KEY
 # Ceramic API key
 REACT_APP_CERAMIC_API=https://domain.com
