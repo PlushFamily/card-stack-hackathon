@@ -9,7 +9,7 @@
 }
 
 .settings {
-    background: white;
+    background: #ffffff42;
     border-radius: .3rem;
     padding: 2rem;
     display: flex;
@@ -20,7 +20,10 @@
 
 .input {
     width: 100%;
+    background: #ffffff85;
     height: 1.5rem;
+    border-radius: 0.2rem;
+    border: navajowhite;
     margin-bottom: 1rem;
     padding: .5rem 1rem;
     font-family: 'Montserrat', sans-serif;
@@ -62,7 +65,7 @@
 
 .saveProfileDataButton {
     padding: .5rem 1rem;
-    background: #ffffff;
+    background: #ffffffad;
     border-radius: .2rem;
     margin-top: .5rem;
     font-weight: 600;
