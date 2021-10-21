@@ -1,5 +1,9 @@
 # CardStack
 
+**CardStack** – a mood tracker that uses DID DataStore For Storage And Magic For Auth.
+
+After passing a short quiz, the user can to get information about his emotional mood, compare with the results of the past days and share the result with friends!
+
 The application was developed on [Hackathon: Sovereign Data Hackathon](https://gitcoin.co/hackathon/ceramic-identity) in the nomination [Build An App That Uses DID DataStore For Storage And Magic For Auth](https://gitcoin.co/issue/ceramicnetwork/ceramic/86/100026722).
 
 ## Features
@@ -8,7 +12,6 @@ The application was developed on [Hackathon: Sovereign Data Hackathon](https://g
 * After authorization in Magic, there will be an login or registration new identity via 3ID Connect
 * Loading user data from IDX and fetch data on past attempts the quiz from DID DataStore
 * On the settings page, users can update personal information which stored in IDX
-* After passing a short quiz, the user can to get information about his emotional mood and compare it with previous attempts
 * Saving data about attempts in the DID DataStore
 
 ## Demo
@@ -52,11 +55,15 @@ https://miro.com/app/board/o9J_lp7bUq0=/?invite_link_id=346148181420
 2. After to download the project you should to create file `.env` at the root of the project with environment variables:
 
 ```
-## Magic.link API key
+# Magic.link API key
 REACT_APP_MAGIC_KEY=pk_live_KEY
 # Ceramic API key
 REACT_APP_CERAMIC_API=https://domain.com
 ```
+
+*You can to get your **REACT_APP_MAGIC_KEY** after registration on https://magic.link/ and created application*
+
+*For value **REACT_APP_CERAMIC_API** you should to type one of the Ceramic node's url. For example: https://ceramic-clay.3boxlabs.com*
 
 3. Then you need to install all project dependencies: `yarn`
 
