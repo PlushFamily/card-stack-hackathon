@@ -14,9 +14,15 @@ interface DataCard {
     id: number
 }
 
+interface ResultData {
+    rate: number,
+    id: number
+}
+
 const CardStack = (): any => {
 
     const [stack, setStack] = useState<DataCard[]>(cardData)
+    const [results, setResults] = useState<ResultData[]>([])
     const [currentCardId, setCurrentCardId] = useState(0)
 
     const styles = StyleSheet.create({
@@ -31,24 +37,50 @@ const CardStack = (): any => {
         setTimeout(() => {
             const updatedStack = stack.filter(item => item.id !== index);
             setStack(updatedStack)
+
+            if (updatedStack.length === 0) {
+                setStack([{id: -1, text: 'End of quiz, your got ' +
+                        results.reduce(function(sum: number, current) {
+                            return sum + current.rate;
+                        }, 0) +
+                        ' points'}])
+            }
         }, 800)
     }
 
+    const saveInStorage = (cardID: number, rate: number) => {
+          results?.push({id: cardID, rate: rate})
+        console.log(results)
+    }
     return (
         <div className={s.cardStackContainer}>
             {stack.map((card, index) => {
                 return (
                     <div key={index} style={{marginTop: index / 2 + 'rem', marginLeft: index / 2 + 'rem'}}
-                         className={`${6 - currentCardId === index ? css(styles.bounce) : ''} ${s.card}`}
-                         onClick={() => answerTheQuestion(index)}>
+                         className={`${6 - currentCardId === index ? css(styles.bounce) : ''} ${s.card}`}>
                         {card.text}
-                        <div className={s.moodRatingButtonsContainer}>
-                            <img alt="vary bad mood" className={s.moodIcon} src={mood1}/>
-                            <img alt="bad mood" className={s.moodIcon} src={mood2}/>
-                            <img alt="neutral mood" className={s.moodIcon} src={mood3}/>
-                            <img alt="good mood" className={s.moodIcon} src={mood4}/>
-                            <img alt="excellent mood" className={s.moodIcon} src={mood5}/>
-                        </div>
+                        {card.id !== -1 && <div className={s.moodRatingButtonsContainer}>
+                            <img onClick={() => {
+                                answerTheQuestion(index)
+                                saveInStorage(card.id, 1)
+                            }} alt="vary bad mood" className={s.moodIcon}  src={mood1}/>
+                            <img onClick={() => {
+                                answerTheQuestion(index)
+                                saveInStorage(card.id, 2)
+                            }} alt="bad mood" className={s.moodIcon} src={mood2}/>
+                            <img onClick={() => {
+                                answerTheQuestion(index)
+                                saveInStorage(card.id, 3)
+                            }} alt="neutral mood" className={s.moodIcon} src={mood3}/>
+                            <img onClick={() => {
+                                answerTheQuestion(index)
+                                saveInStorage(card.id, 4)
+                            }} alt="good mood" className={s.moodIcon} src={mood4}/>
+                            <img onClick={() => {
+                                answerTheQuestion(index)
+                                saveInStorage(card.id, 5)
+                            }} alt="excellent mood" className={s.moodIcon} src={mood5}/>
+                        </div>}
                     </div>
                 )
             })}
