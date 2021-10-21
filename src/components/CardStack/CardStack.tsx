@@ -93,10 +93,10 @@ const CardStack = (): any => {
             {stack.map((card: DataCard, index: number) => {
                 return (
                     <div key={index} style={{marginTop: index / 2 + 'rem', marginLeft: index / 2 + 'rem'}}
-                         className={`${6 - currentCardId === index ? css(styles.bounce) : ''} ${s.card}`}>
+                         className={`${6 - currentCardId === index && stack[0].id !== -1 ? css(styles.bounce) : ''} ${s.card}`}>
                         {card.text}
                         <div className={s.moodRatingButtonsContainer}>
-                            {smileIcons.map((smileIcon: SmileIcon) =>
+                            {stack[0].id !== -1 && smileIcons.map((smileIcon: SmileIcon) =>
                                 <img key={smileIcon.src} onClick={() => {
                                     if (isCardAnimationPlaying) {
                                         stack.length !== 0 && answerTheQuestion(index, smileIcon.rate)
