@@ -6,6 +6,7 @@
     max-width: 1200px;
     margin: auto;
     flex-wrap: wrap;
+    padding: 0 2rem;
 }
 
 .settings {
@@ -27,10 +28,12 @@
     margin-bottom: 1rem;
     padding: .5rem 1rem;
     font-family: 'Montserrat', sans-serif;
+    transition: .3s ease;
 }
 
 .input:focus {
     outline: none;
+    background: #ffffffc2;
 }
 
 .windowTitle {
@@ -46,35 +49,43 @@
     padding-top: 2rem;
 }
 
-.homeButton {
-    position: relative;
-    height: 48px;
-    border-radius: 3px;
-    padding: 1rem;
-    box-sizing: border-box;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    border: 1px solid #747474;
-    cursor: pointer;
-}
-
-.homeButton:hover {
-    text-decoration: underline;
-}
-
 .saveProfileDataButton {
-    padding: .5rem 1rem;
-    background: #ffffffad;
-    border-radius: .2rem;
-    margin-top: .5rem;
-    font-weight: 600;
-    color: #cc58bb;
-    border: 1px solid gray;
+    pointer-events: auto;
     cursor: pointer;
-    transition: .3s ease;
+    background: #e7e7e7;
+    border: none;
+    padding: 1rem 3rem;
     width: 100%;
     text-align: center;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    position: relative;
+    display: inline-block;
+}
+
+.buttonMimas {
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    color: #fff;
+    background: #e7e7e7;
+}
+
+.button::before, .button::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.buttonMimas span {
+    position: relative;
+    mix-blend-mode: difference;
 }
 
 .homeIcon {
@@ -82,15 +93,8 @@
     cursor: pointer;
 }
 
-.saveProfileDataButton:hover {
-    background: #cd5bba21;
-    color: #1a0000;
-    border: 1px solid #dfdfdf;
-    cursor: pointer;
-}
-
 .textArea {
-    min-height: 80px;
-    min-width: 566px;
-    max-height: 400px;
+    resize: none;
+    min-height: 100px;
+    max-height: 120px;
 }

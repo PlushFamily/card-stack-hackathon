@@ -59,8 +59,8 @@ function Settings() {
                 <textarea defaultValue={userDescription} name="description"
                           onBlur={(e) => setUserDescription(e.target.value)}
                           className={`${s.input} ${s.textArea}`} placeholder="About myself"/>
-                <div onClick={() => changePersonalInfo()} className={s.saveProfileDataButton}>
-                    Save
+                <div onClick={() => changePersonalInfo()} className={`${s.saveProfileDataButton} ${s.buttonMimas} ${s.up}`}>
+                   <span>Save</span>
                 </div>
             </div>
         </div> : <Loader/>
