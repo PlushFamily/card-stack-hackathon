@@ -61,6 +61,10 @@ REACT_APP_MAGIC_KEY=pk_live_KEY
 REACT_APP_CERAMIC_API=https://domain.com
 ```
 
+*You can to get your **REACT_APP_MAGIC_KEY** after registration on https://magic.link/ and created application*
+
+*For value **REACT_APP_CERAMIC_API** you should to type one of the Ceramic node's url. For example: https://ceramic-clay.3boxlabs.com*
+
 3. Then you need to install all project dependencies: `yarn`
 
 ## Run project
