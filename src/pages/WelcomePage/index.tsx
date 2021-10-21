@@ -47,7 +47,7 @@ const WelcomePage: FC = () => {
         }
         checkMagicAuth()
         checkCeramicAuth()
-    }, [window.location.href, isMagicAuthenticated])
+    }, [isMagicAuthenticated, history])
 
     return <div className={s.pageContainer}>
         {!isMagicAuthenticated ?
