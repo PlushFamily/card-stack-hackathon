@@ -46,6 +46,8 @@ const WelcomePage: FC = () => {
                 }
             } catch (err) {
                 console.log(err)
+            } finally {
+                setIsFetching(false)
             }
         }
         checkMagicAuth()
