@@ -8,6 +8,15 @@ The application was developed on [Hackathon: Sovereign Data Hackathon](https://g
 
 View on [card-stack-hackathon-zr8qz.ondigitalocean.app](https://card-stack-hackathon-zr8qz.ondigitalocean.app/)
 
+## Screenshots
+
+<img width="1680" alt="Screenshot 2021-10-21 at 21 34 52" src="https://user-images.githubusercontent.com/9155259/138336767-ebb425f5-e80c-4ef2-9cc0-88d0bfea34ff.png">
+
+<img width="1680" alt="Screenshot 2021-10-21 at 21 41 33" src="https://user-images.githubusercontent.com/9155259/138337613-ba36153e-2152-4d23-877f-a6a681215181.png">
+
+<img width="1680" alt="Screenshot 2021-10-21 at 21 42 41" src="https://user-images.githubusercontent.com/9155259/138337779-a1052779-7a2d-4033-b275-5047adff9dba.png">
+
+
 ## Technologies used
 
 1. ReactJS
