@@ -6,6 +6,7 @@ import {cardData, SmileIcon, smileIcons} from "./data";
 import repeatIcon from '../../assets/arrow-repeat.svg'
 import saveIcon from '../../assets/save.svg'
 import playIcon from '../../assets/play.svg'
+import {ScaleLoader} from "react-spinners";
 
 interface DataCard {
     text: string,
@@ -24,6 +25,7 @@ const CardStack = (): any => {
     const [currentCardId, setCurrentCardId] = useState(0)
     const [isCardAnimationPlaying, setIsCardAnimationPlaying] = useState(true)
     const [isFirstTimeQuiz, setIsFirstTimeQuiz] = useState(true)
+    const [isPostingResult, setIsPostingResult] = useState(false)
 
     const styles = StyleSheet.create({
         bounce: {
@@ -31,6 +33,13 @@ const CardStack = (): any => {
             animationDuration: '1s'
         }
     })
+
+    const writeResult = () => {
+        setIsPostingResult(true)
+        setTimeout(() => {
+            setIsPostingResult(false)
+        }, 2000)
+    }
 
     const answerTheQuestion = (index: number, rate: number) => {
         setIsCardAnimationPlaying(false)
@@ -88,9 +97,16 @@ const CardStack = (): any => {
                                             <span className={s.attempt}>4: 7 points</span>
                                         </div>
                                     </div>
-                                    <div className={s.resultBtn}>
+                                    <div className={s.resultBtn} onClick={() => {
+                                        writeResult()
+                                    }}>
                                         <img alt="save in ceramic store" className={s.resultIcon} src={saveIcon}/>
-                                        <span className={s.resultBtnText}>Save result in DID DataStore</span>
+
+                                        {isPostingResult ?
+                                            <div className={s.loader}>
+                                                <ScaleLoader/>
+                                            </div> :
+                                            <span className={s.resultBtnText}>Save result in DID DataStore</span>}
                                     </div>
                                     <div className={s.resultBtn} onClick={() => replayQuiz()}>
                                         <img className={s.resultIcon} alt="repeat" src={repeatIcon}/>
