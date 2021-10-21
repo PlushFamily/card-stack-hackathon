@@ -1,0 +1,43 @@
+.cardStackContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 600px;
+    position: absolute;
+    height: 140px;
+    border-radius: .3rem;
+    padding: 3rem 1rem;
+    border: 1px solid #747474;
+    font-size: 1.5rem;
+    background-image: radial-gradient( circle 588px at 31.7% 40.2%, rgba(225,200,239,1) 21.4%, rgba(163,225,233,1) 57.1% );
+}
+
+.moodRatingButtonsContainer {
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.moodIcon {
+    padding-left: 1rem;
+    max-width: 50px;
+    opacity: .5;
+    transition: .2s ease;
+}
+
+.moodIcon:first-child {
+    padding-left: 0;
+}
+
+.moodIcon:hover {
+    opacity: 1;
+    cursor: pointer;
+}

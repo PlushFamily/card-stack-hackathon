@@ -1,22 +1,43 @@
 .pageContainer {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     height: 100vh;
     padding: 0 2rem;
     font-family: 'Nunito', sans-serif;
+    overflow-y: hidden;
+}
+
+.pageWrapper {
+    width: 100%;
 }
 
 .loginContainer {
+    width: 100%;
     max-width: 200px;
     background: white;
     padding: 2rem;
+    margin: auto;
     text-align: center;
     transition: .5s ease;
-    border-radius: .2rem;
+    border-radius: 1rem;
     border: 1px solid #d8d8d8;
-    -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: rgb(255 255 255 / 49%) 0px 10px 36px 0px, rgb(0 0 0 / 6%) 0px 0px 0px 1px;
+}
+
+.homeIcon {
+    width: 48px;
+    cursor: pointer;
+}
+
+.controlContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 2rem;
 }
 
 .loginWithServiceButtons {
@@ -65,7 +86,7 @@
     width: 100%;
     padding: .5rem;
     border-radius: 4px;
-    border: 1px solid #909090;
+    border: 1px solid #d9d9d9;
     outline: none;
 }
 
