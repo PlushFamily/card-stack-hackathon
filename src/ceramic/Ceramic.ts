@@ -52,11 +52,14 @@ export const ceramicAuth = async () => {
     const provider = await threeIdConnect.getDidProvider()
 
     try {
-        if (ceramic?.did?.id && provider) {
+        if (ceramic?.did?.id && provider.accountId) {
             localStorage.setItem('did', ceramic?.did?.id)
             console.log(`You are successfully logged in Ceramic with DID: ${ceramic?.did?.id}`)
         }
     } catch (err) {
+        console.log(provider)
+        if (!provider.accountId)
+        console.log(provider.accountId)
         ceramic?.did?.setProvider(provider)
         await ceramic?.did?.authenticate()
     }

@@ -3,19 +3,24 @@
     border-radius: 3px;
     padding: 1rem;
     box-sizing: border-box;
-    background: #ffffff;
+    background: #ffffff42;
     display: flex;
     align-items: center;
     position: relative;
     border: 1px solid #747474;
 }
 
-.logoutButton {
-    cursor: pointer;
-    padding-left: 4px;
-}
-
 .logoutButton:hover {
     text-decoration: underline;
     color: #c10085;
+    cursor: pointer;
+}
+
+.settingsIcon {
+    max-height: 48px;
+    cursor: pointer;
+}
+
+.profileDivider {
+    padding: 0 4px;
 }

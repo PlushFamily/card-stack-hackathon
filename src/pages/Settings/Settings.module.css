@@ -71,6 +71,11 @@
     text-align: center;
 }
 
+.homeIcon {
+    width: 48px;
+    cursor: pointer;
+}
+
 .saveProfileDataButton:hover {
     background: #cd5bba21;
     color: #1a0000;

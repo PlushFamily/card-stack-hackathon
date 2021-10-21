@@ -4,6 +4,7 @@ import {ceramicAuth, idx} from "../../ceramic/Ceramic";
 import {ceramic} from "../../ceramic/Auth";
 import Profile from "../../components/Profile/Profile";
 import {useHistory} from "react-router-dom";
+import HomeIcon from "../../assets/home-button-svgrepo-com.svg";
 
 interface CeramicUserData {
     name?: string,
@@ -41,8 +42,10 @@ function Settings() {
         <>
             <div className={s.settingsContainer}>
                 <div className={s.controlContainer}>
-                    <span className={s.homeButton} onClick={() => history.push('/')}>Home</span>
-                    <Profile email/>
+                    <span onClick={() => history.push('/')}>
+                        <img className={s.homeIcon} alt="home" src={HomeIcon}/>
+                    </span>
+                    <Profile email="your email"/>
                 </div>
                 <div className={s.settings}>
                     <span className={s.windowTitle}>Settings</span>

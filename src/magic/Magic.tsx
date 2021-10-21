@@ -1,6 +1,7 @@
 import { Magic } from 'magic-sdk'
 import { OAuthExtension } from '@magic-ext/oauth'
 import { OAuthProvider } from '@magic-ext/oauth/dist/types/types'
+import {ceramic} from "../ceramic/Auth";
 
 const { REACT_APP_MAGIC_KEY }: any = process.env
 
@@ -21,5 +22,7 @@ export const loginWithService = async (serviceName: OAuthProvider) => {
 export const logout = async () => {
   await magic.user.logout()
   localStorage.clear()
+  // @ts-ignore
+  ceramic.did?.setProvider(null)
   window.location.href = '/'
 }
