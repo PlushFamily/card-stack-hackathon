@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {bounceOutDown} from 'react-animations';
 import {StyleSheet, css} from 'aphrodite';
 import s from './CardStack.module.css'
-import {cardData} from "./data";
-import mood1 from '../../assets/smiles/mood-1.svg'
-import mood2 from '../../assets/smiles/mood-2.svg'
-import mood3 from '../../assets/smiles/mood-3.svg'
-import mood4 from '../../assets/smiles/mood-4.svg'
-import mood5 from '../../assets/smiles/mood-5.svg'
+import {cardData, SmileIcon, smileIcons} from "./data";
+import repeatIcon from '../../assets/arrow-repeat.svg'
+import saveIcon from '../../assets/save.svg'
 
 interface DataCard {
     text: string,
@@ -19,46 +16,13 @@ interface ResultData {
     id: number
 }
 
-interface SmileIcon {
-    src: any,
-    alt?: string,
-    rate: number
-}
-
-
 const CardStack = (): any => {
 
     const [stack, setStack] = useState<DataCard[]>(cardData)
-    const [results,] = useState<ResultData[]>([])
+    const [quizResults, setQuizResult] = useState<ResultData[]>([])
     const [currentCardId, setCurrentCardId] = useState(0)
     const [isCardAnimationPlaying, setIsCardAnimationPlaying] = useState(true)
-    const smileIcons: SmileIcon[] = [
-        {
-            src: mood1,
-            alt: 'vary bad mood',
-            rate: 1
-        },
-        {
-            src: mood2,
-            alt: 'bad mood',
-            rate: 2
-        },
-        {
-            src: mood3,
-            alt: 'neutral mood',
-            rate: 3
-        },
-        {
-            src: mood4,
-            alt: 'good mood',
-            rate: 4
-        },
-        {
-            src: mood5,
-            alt: 'excellent mood',
-            rate: 5
-        }
-    ]
+
 
     const styles = StyleSheet.create({
         bounce: {
@@ -77,15 +41,21 @@ const CardStack = (): any => {
             if (updatedStack.length === 0) {
                 setStack([{
                     id: -1, text: 'End of quiz, your got ' +
-                        results.reduce(function (sum: number, current) {
+                        quizResults.reduce(function (sum: number, current) {
                             return sum + current.rate;
-                        }, 0) +
-                        ' points'
+                        }, 0) + ' points'
                 }])
             }
             setIsCardAnimationPlaying(true)
-            results?.push({id: 6 - index, rate: rate})
+            quizResults?.push({id: 6 - index, rate: rate})
+            console.log(quizResults)
         }, 800)
+    }
+
+    const replayQuiz = () => {
+        setCurrentCardId(0)
+        setStack(cardData)
+        setQuizResult([])
     }
 
     return (
@@ -96,15 +66,32 @@ const CardStack = (): any => {
                          className={`${6 - currentCardId === index && stack[0].id !== -1 ? css(styles.bounce) : ''} ${s.card}`}>
                         {card.text}
                         <div className={s.moodRatingButtonsContainer}>
-                            {stack[0].id !== -1 && smileIcons.map((smileIcon: SmileIcon) =>
+                            {stack[0].id !== -1 ? smileIcons.map((smileIcon: SmileIcon) =>
                                 <img key={smileIcon.src} onClick={() => {
                                     if (isCardAnimationPlaying) {
                                         stack.length !== 0 && answerTheQuestion(index, smileIcon.rate)
                                     }
                                 }} alt={smileIcon.alt} className={s.moodIcon} src={smileIcon.src}/>
-                            )}
+                            ) : <div>
+                                <div className={s.lastAttemptsContainer}>
+                                    <span className={s.lastAttemptsTitle}>Last attempts:</span>
+                                    <div className={s.lastAttempts}>
+                                        <span className={s.attempt}>1: 19 points</span>
+                                        <span  className={s.attempt}>2: 11 points</span>
+                                        <span  className={s.attempt}>3: 12 points</span>
+                                        <span  className={s.attempt}>4: 7 points</span>
+                                    </div>
+                                </div>
+                                <div className={s.resultBtn}>
+                                    <img alt="save in ceramic store" className={s.resultIcon} src={saveIcon}/>
+                                    <span className={s.resultBtnText}>Save in DID DataStore</span>
+                                </div>
+                                <div className={s.resultBtn} onClick={() => replayQuiz()}>
+                                    <img className={s.resultIcon} alt="repeat" src={repeatIcon}/>
+                                    <span className={s.resultBtnText}>Repeat attempt</span>
+                                </div>
+                            </div>}
                         </div>
-
                     </div>
                 )
             })}
