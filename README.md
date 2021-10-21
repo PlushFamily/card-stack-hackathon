@@ -20,6 +20,8 @@ View on [card-stack-hackathon-zr8qz.ondigitalocean.app](https://card-stack-hacka
 
 ## Schemes of work
 
+https://miro.com/app/board/o9J_lp7bUq0=/?invite_link_id=346148181420
+
 ## Requirements
 
 * NodeJS 14 or older
