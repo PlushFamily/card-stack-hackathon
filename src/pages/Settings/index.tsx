@@ -6,6 +6,7 @@ import Profile from "../../components/Profile/Profile";
 import {useHistory} from "react-router-dom";
 import HomeIcon from "../../assets/home-button-svgrepo-com.svg";
 import Loader from "../../components/Loader/Loader";
+import {magic} from "../../magic/Magic";
 
 interface CeramicUserData {
     name?: string,
@@ -15,12 +16,15 @@ interface CeramicUserData {
 function Settings() {
 
     const [userName, setUserName] = useState('')
+    const [userEmail, setUserEmail] = useState<any>('')
     const [isFetching, setIsFetching] = useState(true);
     const [userDescription, setUserDescription] = useState('')
     const history = useHistory()
 
     useEffect(() => {
         ceramicAuth().then(async () => {
+            const userEmail = await magic.user.getMetadata()
+            setUserEmail(userEmail.email)
             const ceramicUserData: CeramicUserData | null = await idx.get('basicProfile', ceramic?.did?.id)
             if (ceramicUserData?.name && ceramicUserData?.description) {
                 setUserName(ceramicUserData?.name)
@@ -45,7 +49,7 @@ function Settings() {
                     <span onClick={() => history.push('/')}>
                         <img className={s.homeIcon} alt="home" src={HomeIcon}/>
                     </span>
-                <Profile email="your email"/>
+                <Profile email={userEmail}/>
             </div>
             <div className={s.settings}>
                 <span className={s.windowTitle}>Settings</span>

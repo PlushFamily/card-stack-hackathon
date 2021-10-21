@@ -6,12 +6,12 @@ import {Switch} from "react-router-dom";
 import {Route} from "./Router";
 
 function App() {
-  return (
-    <Switch>
-      <Route path='/settings' component={Settings} />
-        <Route path='/' component={WelcomePage} />
-    </Switch>
-  )
+    return (
+        <Switch>
+            <Route path='/settings' component={Settings}/>
+            <Route path='/' component={WelcomePage}/>
+        </Switch>
+    )
 }
 
 export default App

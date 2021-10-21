@@ -55,45 +55,46 @@ const WelcomePage: FC = () => {
     }, [isMagicAuthenticated, isFetching, history])
 
     return <div className={s.pageContainer}>
-        {isFetching ?  <Loader/> :
+        {isFetching ? <Loader/> :
             !isMagicAuthenticated ?
-            <div className={s.loginContainer}>
-                <h1 className={s.loginTitle}>Login</h1>
-                <div className={s.loginWithEmailContainer}>
-                    <input className={s.emailInput} onChange={(e) => setEmail(e.target.value)} type='email' name='email'
-                           required
-                           placeholder='Enter your email'/>
-                    <button className={s.loginButton} onClick={() => email !== '' && handleLogin(email)}
-                            type='submit'>Send
-                    </button>
-                </div>
-                <div className={s.orSeparator}>
-                    or
-                </div>
-                <div className={s.loginWithServiceButtons}>
-                    <div className={s.loginWithServiceButton} onClick={() => loginWithService('google')}>
-                        <img className={s.icon} alt={'googleIcon'} src={googleIcon}/>
+                <div className={s.loginContainer}>
+                    <h1 className={s.loginTitle}>Login</h1>
+                    <div className={s.loginWithEmailContainer}>
+                        <input className={s.emailInput} onChange={(e) => setEmail(e.target.value)} type='email'
+                               name='email'
+                               required
+                               placeholder='Enter your email'/>
+                        <button className={s.loginButton} onClick={() => email !== '' && handleLogin(email)}
+                                type='submit'>Send
+                        </button>
                     </div>
-                    <div className={s.loginWithServiceButton} onClick={() => loginWithService('facebook')}>
-                        <img className={s.icon} alt={'facebookIcon'} src={facebookIcon}/>
+                    <div className={s.orSeparator}>
+                        or
                     </div>
-                    <div className={s.loginWithServiceButton} onClick={() => loginWithService('github')}>
-                        <img className={s.icon} alt={'githubIcon'} src={githubIcon}/>
+                    <div className={s.loginWithServiceButtons}>
+                        <div className={s.loginWithServiceButton} onClick={() => loginWithService('google')}>
+                            <img className={s.icon} alt={'googleIcon'} src={googleIcon}/>
+                        </div>
+                        <div className={s.loginWithServiceButton} onClick={() => loginWithService('facebook')}>
+                            <img className={s.icon} alt={'facebookIcon'} src={facebookIcon}/>
+                        </div>
+                        <div className={s.loginWithServiceButton} onClick={() => loginWithService('github')}>
+                            <img className={s.icon} alt={'githubIcon'} src={githubIcon}/>
+                        </div>
                     </div>
-                </div>
-            </div> :
-            <>
-                <div className={s.controlContainer}>
+                </div> :
+                <>
+                    <div className={s.controlContainer}>
                     <span onClick={() => history.push('/')}>
                         <img className={s.homeIcon} alt="home" src={HomeIcon}/>
                     </span>
-                    <Profile email={userProfile.email}/>
-                </div>
-                <div className={s.pageWrapper}>
-                    <CardStack/>
-                </div>
-            </>
-           }
+                        <Profile email={userProfile.email}/>
+                    </div>
+                    <div className={s.pageWrapper}>
+                        <CardStack/>
+                    </div>
+                </>
+        }
     </div>
 }
 
