@@ -1,0 +1,21 @@
+.profileContainer {
+    height: 48px;
+    border-radius: 3px;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid #747474;
+}
+
+.logoutButton {
+    cursor: pointer;
+    padding-left: 4px;
+}
+
+.logoutButton:hover {
+    text-decoration: underline;
+    color: #c10085;
+}

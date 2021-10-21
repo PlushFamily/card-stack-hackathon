@@ -1,0 +1,85 @@
+.settingsContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    max-width: 900px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.settings {
+    background: white;
+    border-radius: .3rem;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    padding: .5rem 1rem;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.windowTitle {
+    font-size: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.controlContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 2rem;
+}
+
+.homeButton {
+    position: relative;
+    height: 48px;
+    border-radius: 3px;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    border: 1px solid #747474;
+    cursor: pointer;
+}
+
+.homeButton:hover {
+    text-decoration: underline;
+}
+
+.saveProfileDataButton {
+    padding: .5rem 1rem;
+    background: #ffffff;
+    border-radius: .2rem;
+    margin-top: .5rem;
+    font-weight: 600;
+    color: #cc58bb;
+    border: 1px solid gray;
+    cursor: pointer;
+    transition: .3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.saveProfileDataButton:hover {
+    background: #cd5bba21;
+    color: #1a0000;
+    border: 1px solid #dfdfdf;
+    cursor: pointer;
+}
+
+.textArea {
+    min-height: 80px;
+    min-width: 566px;
+    max-height: 400px;
+}
