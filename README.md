@@ -1,8 +1,15 @@
-# card-stack-hackathon
+# CardStack
 
 The application was developed on [Hackathon: Sovereign Data Hackathon](https://gitcoin.co/hackathon/ceramic-identity) in the nomination [Build An App That Uses DID DataStore For Storage And Magic For Auth](https://gitcoin.co/issue/ceramicnetwork/ceramic/86/100026722).
 
 ## Features
+
+* Authenticating in the application using Magic(Magic link/OAuth 2.0)
+* After authorization in Magic, there will be an login or registration new identity via 3ID Connect
+* Loading user data from IDX and fetch data on past attempts the quiz from DID DataStore
+* On the settings page, users can update personal information which stored in IDX
+* After passing a short quiz, the user can to get information about his emotional mood and compare it with previous attempts
+* Saving data about attempts in the DID DataStore
 
 ## Demo
 
