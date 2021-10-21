@@ -4,6 +4,8 @@ import {ceramicAuth, idx} from "../../ceramic/Ceramic";
 import {ceramic} from "../../ceramic/Auth";
 import Profile from "../../components/Profile/Profile";
 import {useHistory} from "react-router-dom";
+import HomeIcon from "../../assets/home-button-svgrepo-com.svg";
+import Loader from "../../components/Loader/Loader";
 
 interface CeramicUserData {
     name?: string,
@@ -13,19 +15,18 @@ interface CeramicUserData {
 function Settings() {
 
     const [userName, setUserName] = useState('')
+    const [isFetching, setIsFetching] = useState(true);
     const [userDescription, setUserDescription] = useState('')
     const history = useHistory()
 
     useEffect(() => {
         ceramicAuth().then(async () => {
             const ceramicUserData: CeramicUserData | null = await idx.get('basicProfile', ceramic?.did?.id)
-            if (ceramicUserData?.name) {
+            if (ceramicUserData?.name && ceramicUserData?.description) {
                 setUserName(ceramicUserData?.name)
-            }
-            if (ceramicUserData?.description) {
                 setUserDescription(ceramicUserData?.description)
+                setIsFetching(false)
             }
-
         })
     }, [])
 
@@ -38,27 +39,27 @@ function Settings() {
         }
     }
     return (
-        <>
-            <div className={s.settingsContainer}>
-                <div className={s.controlContainer}>
-                    <span className={s.homeButton} onClick={() => history.push('/')}>Home</span>
-                    <Profile email/>
-                </div>
-                <div className={s.settings}>
-                    <span className={s.windowTitle}>Settings</span>
-                    <input name="name" defaultValue={userName} onBlur={(e) => setUserName(e.target.value)}
-                           className={s.input} type="text"
-                           placeholder="Name"/>
-                    <textarea defaultValue={userDescription} name="description"
-                              onBlur={(e) => setUserDescription(e.target.value)}
-                              className={`${s.input} ${s.textArea}`} placeholder="About myself"/>
-                    <div onClick={() => changePersonalInfo()} className={s.saveProfileDataButton}>
-                        Save
-                    </div>
+        !isFetching ?
+        <div className={s.settingsContainer}>
+            <div className={s.controlContainer}>
+                    <span onClick={() => history.push('/')}>
+                        <img className={s.homeIcon} alt="home" src={HomeIcon}/>
+                    </span>
+                <Profile email="your email"/>
+            </div>
+            <div className={s.settings}>
+                <span className={s.windowTitle}>Settings</span>
+                <input name="name" defaultValue={userName} onBlur={(e) => setUserName(e.target.value)}
+                       className={s.input} type="text"
+                       placeholder="Name"/>
+                <textarea defaultValue={userDescription} name="description"
+                          onBlur={(e) => setUserDescription(e.target.value)}
+                          className={`${s.input} ${s.textArea}`} placeholder="About myself"/>
+                <div onClick={() => changePersonalInfo()} className={s.saveProfileDataButton}>
+                    Save
                 </div>
             </div>
-        </>
-
+        </div> : <Loader/>
     )
 }
 

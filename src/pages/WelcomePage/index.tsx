@@ -9,8 +9,10 @@ import {ceramicAuth} from '../../ceramic/Ceramic'
 import Profile from "../../components/Profile/Profile";
 import CardStack from "../../components/CardStack/CardStack";
 import HomeIcon from "../../assets/home-button-svgrepo-com.svg"
+import Loader from "../../components/Loader/Loader";
 
 const WelcomePage: FC = () => {
+    const [isFetching, setIsFetching] = useState(true);
     const [isMagicAuthenticated, setMagicIsAuthenticated] = useState<boolean>(false)
     const [userProfile, setUserProfile] = useState<any>({})
     const [email, setEmail] = useState('')
@@ -21,6 +23,7 @@ const WelcomePage: FC = () => {
             setMagicIsAuthenticated(await magic.user.isLoggedIn())
             if (isMagicAuthenticated) {
                 setUserProfile(await magic.user.getMetadata())
+                setIsFetching(false)
             } else {
                 await magicAuth()
             }
@@ -43,16 +46,19 @@ const WelcomePage: FC = () => {
                 }
             } catch (err) {
                 console.log(err)
+            } finally {
+                setIsFetching(false)
             }
         }
         checkMagicAuth()
         checkCeramicAuth()
-    }, [window.location.href, isMagicAuthenticated])
+    }, [isMagicAuthenticated, isFetching, history])
 
     return <div className={s.pageContainer}>
-        {!isMagicAuthenticated ?
+        {isFetching ?  <Loader/> :
+            !isMagicAuthenticated ?
             <div className={s.loginContainer}>
-                <h1>Login</h1>
+                <h1 className={s.loginTitle}>Login</h1>
                 <div className={s.loginWithEmailContainer}>
                     <input className={s.emailInput} onChange={(e) => setEmail(e.target.value)} type='email' name='email'
                            required

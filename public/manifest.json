@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CardStack",
+  "name": "A mood tracker that uses DID DataStore For Storage And Magic For Auth",
   "icons": [
     {
       "src": "favicon.ico",
