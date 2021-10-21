@@ -26,7 +26,6 @@ const WelcomePage: FC = () => {
                 setIsFetching(false)
             } else {
                 await magicAuth()
-                setIsFetching(false)
             }
         }
         const checkCeramicAuth = async () => isMagicAuthenticated && ceramicAuth()
@@ -47,8 +46,6 @@ const WelcomePage: FC = () => {
                 }
             } catch (err) {
                 console.log(err)
-            } finally {
-                setIsFetching(false)
             }
         }
         checkMagicAuth()
