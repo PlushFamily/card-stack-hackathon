@@ -7,6 +7,8 @@ import repeatIcon from '../../assets/arrow-repeat.svg'
 import saveIcon from '../../assets/save.svg'
 import playIcon from '../../assets/play.svg'
 import {ScaleLoader} from "react-spinners";
+import {TileDocument} from '@ceramicnetwork/stream-tile'
+import {ceramic} from "../../ceramic/Auth";
 
 interface DataCard {
     text: string,
@@ -26,6 +28,9 @@ const CardStack = (): any => {
     const [isCardAnimationPlaying, setIsCardAnimationPlaying] = useState(true)
     const [isFirstTimeQuiz, setIsFirstTimeQuiz] = useState(true)
     const [isPostingResult, setIsPostingResult] = useState(false)
+    const [document, setDocument] = useState();
+
+    const [Data, setData] = useState();
 
     const styles = StyleSheet.create({
         bounce: {
@@ -34,11 +39,59 @@ const CardStack = (): any => {
         }
     })
 
-    const writeResult = () => {
+    const writeResult = async () => {
         setIsPostingResult(true)
         setTimeout(() => {
             setIsPostingResult(false)
         }, 2000)
+
+
+
+        const doc = await TileDocument.create(
+            ceramic,
+            null,
+            {
+                // @ts-ignore
+                controllers: [ceramic?.did?.id],
+                deterministic: true
+            },
+            {anchor: false, publish: false}
+        )
+        // @ts-ignore
+        console.log(doc.content.score)
+        {
+            setData(
+                {
+                    // @ts-ignore
+                    score: quizResults.reduce(function (sum: number, current) {
+                        return sum + current.rate;
+                    }, 0)
+                }
+            )
+        }
+        // @ts-ignore
+        setDocument(doc)
+
+        function handleSubmit() {
+
+            let Data = {
+                score: quizResults.reduce(function (sum: number, current) {
+                    return sum + current.rate;
+                }, 0)
+            }
+
+            // @ts-ignore
+            setData(Data)
+
+            if (Data) {
+                (async () => {
+                    // @ts-ignore
+                    await document?.update(Data);
+                })();
+            }
+        }
+
+        handleSubmit()
     }
 
     const answerTheQuestion = (index: number, rate: number) => {
