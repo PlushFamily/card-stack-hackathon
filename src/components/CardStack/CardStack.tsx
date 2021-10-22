@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useState} from 'react';
 import {bounceOutDown} from 'react-animations';
 import {StyleSheet, css} from 'aphrodite';
@@ -7,6 +8,8 @@ import repeatIcon from '../../assets/arrow-repeat.svg'
 import saveIcon from '../../assets/save.svg'
 import playIcon from '../../assets/play.svg'
 import {ScaleLoader} from "react-spinners";
+import { TileDocument } from '@ceramicnetwork/stream-tile'
+import {ceramic} from "../../ceramic/Auth";
 
 interface DataCard {
     text: string,
@@ -26,6 +29,15 @@ const CardStack = (): any => {
     const [isCardAnimationPlaying, setIsCardAnimationPlaying] = useState(true)
     const [isFirstTimeQuiz, setIsFirstTimeQuiz] = useState(true)
     const [isPostingResult, setIsPostingResult] = useState(false)
+    const [document, setDocument] = useState();
+
+    const [Data, setData] = useState();
+
+    const [Name, setName] = useState();
+    const [ID, setID] = useState();
+    const [Desc, setDesc] = useState();
+    const [ImageURL, setImageURL] = useState('Card Stackk');
+    const [loadingMessage, setLoadingMessage] = useState('Loading...');
 
     const styles = StyleSheet.create({
         bounce: {
@@ -34,11 +46,59 @@ const CardStack = (): any => {
         }
     })
 
-    const writeResult = () => {
+    const writeResult = async () => {
         setIsPostingResult(true)
         setTimeout(() => {
             setIsPostingResult(false)
         }, 2000)
+
+
+        const doc = await TileDocument.create(
+            ceramic,
+            null,
+            {
+                // @ts-ignore
+                controllers: [ceramic?.did?.id],
+                deterministic: true
+            },
+            { anchor: false, publish: false }
+        )
+        {
+            setData(
+                {name: 'Name', id: 'ID', description: 'Desc', image: 'ImageURL'}
+            )
+        }
+
+        setDocument(doc)
+        setLoadingMessage('');
+
+        function handleSubmit() {
+            setLoadingMessage('Updating...')
+            let t = setTimeout(() => {
+                setLoadingMessage('')
+            }, 20000);
+
+            let Data = {
+                name: Name,
+                id: ID,
+                description: Desc,
+                image: ImageURL
+            }
+
+            // @ts-ignore
+            setData(Data)
+
+            if(Data) {
+                (async() => {
+                    // @ts-ignore
+                    await document?.update(Data);
+                    setLoadingMessage('');
+                    clearTimeout(t);
+                })();
+            }
+        }
+
+        handleSubmit()
     }
 
     const answerTheQuestion = (index: number, rate: number) => {
